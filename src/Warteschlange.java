@@ -1,8 +1,8 @@
 import java.util.NoSuchElementException;
 
-public interface Warteschlange extends Speicher{
+public interface Warteschlange<T> extends Speicher<T>{
 
-    public int front() throws NoSuchElementException;
+    public T front() throws NoSuchElementException;
 
 
 }

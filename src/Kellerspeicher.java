@@ -1,8 +1,8 @@
 import java.util.NoSuchElementException;
 
-public interface Kellerspeicher extends Speicher {
+public interface Kellerspeicher<T> extends Speicher<T> {
 
-    public int top() throws NoSuchElementException;
+    public T top() throws NoSuchElementException;
 
 
 

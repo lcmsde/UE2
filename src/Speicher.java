@@ -1,6 +1,6 @@
 import java.util.NoSuchElementException;
 
-public interface Speicher {
+public interface Speicher<T> {
 
 
 
@@ -10,9 +10,9 @@ public interface Speicher {
 
     public int capacity();
 
-    public void push(int e) throws IllegalStateException;
+    public void push(T e) throws IllegalStateException;
 
-    public int pop() throws NoSuchElementException;
+    public T pop() throws NoSuchElementException;
 
 
 

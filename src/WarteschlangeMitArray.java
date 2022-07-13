@@ -1,12 +1,12 @@
 import java.util.NoSuchElementException;
 
-public class WarteschlangeMitArray implements Warteschlange {
+public class WarteschlangeMitArray<T> implements Warteschlange<T> {
 
-    int[] speicher;
+    T[] speicher;
     int size;
 
     public WarteschlangeMitArray(int maxGroesse){
-        speicher = new int[maxGroesse];
+        speicher = (T[])new Object[maxGroesse];
         size=0;
     }
 
@@ -22,16 +22,16 @@ public class WarteschlangeMitArray implements Warteschlange {
         return speicher.length;
     }
 
-    public void push(int e) throws IllegalStateException {
+    public void push(T e) throws IllegalStateException {
         if(size== speicher.length){
             throw new IllegalStateException();
         }
         speicher[size++] = e;
     }
 
-    public int pop() throws NoSuchElementException {
+    public T pop() throws NoSuchElementException {
 
-        int tmp = speicher[0];
+        T tmp = (T)speicher[0];
         for(int i =1; i<size; i++){
             speicher[i-1] = speicher[i];
         }
@@ -40,7 +40,7 @@ public class WarteschlangeMitArray implements Warteschlange {
         return tmp;
     }
 
-    public int front() throws NoSuchElementException {
-        return speicher[0];
+    public T front() throws NoSuchElementException {
+        return (T)speicher[0];
     }
 }

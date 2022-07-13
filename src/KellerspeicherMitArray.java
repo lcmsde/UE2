@@ -1,16 +1,16 @@
 import java.util.NoSuchElementException;
 
-public class KellerspeicherMitArray implements Kellerspeicher{
-int[] speicher;
+public class KellerspeicherMitArray<T> implements Kellerspeicher<T>{
+T[] speicher;
 int size;
 
     public KellerspeicherMitArray(int maxGroesse){
-        speicher = new int[maxGroesse];
+        speicher = (T[]) new Object[maxGroesse];
         size=0;
     }
 
 
-    public int top() throws NoSuchElementException {
+    public T top() throws NoSuchElementException {
         if(size==0){
             throw new NoSuchElementException();
         }else
@@ -29,20 +29,20 @@ int size;
         return speicher.length;
     }
 
-    public void push(int e) throws IllegalStateException {
+    public void push(T e) throws IllegalStateException {
     if(size == speicher.length){
         throw new IllegalStateException();
     }else
         speicher[size++]=e;
     }
 
-    public int pop() throws NoSuchElementException {
-        int tmp;
-        if (size == 0) {
+    public T pop() throws NoSuchElementException {
+        if(size == 0){
             throw new NoSuchElementException();
-        } else {
-        return speicher[--size];
+        }else {
+            T tmp = this.speicher[size - 1];
+            size--;
+            return tmp;
         }
-
     }
 }
